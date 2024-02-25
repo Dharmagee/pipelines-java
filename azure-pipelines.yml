@@ -6,9 +6,17 @@
 trigger:
 - main
 
-pool:
-  vmImage: "windows-latest"
+strategy:
+ matrix:
+  linux:
+   imageName: "ubuntu-latest"
+  mac:
+    imageName: "macos-latest"
+  windows:
+    imageName: "windows-latest"
 
+pool:
+  vmImage: $(imageName)
 steps:
 - task: Maven@3
   inputs:
